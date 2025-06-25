@@ -26,8 +26,7 @@ func main() {
 		Short: "examp",
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("Args:", args)
-			// Сохраняем в базу внутри Run, когда args доступны
-			err := fukkk.Logs(db, fmt.Sprint(args), "ok")
+			err := fukkk.Logs(db, fmt.Sprint(args), "good")
 			if err != nil {
 				log.Fatal(err)
 			}
