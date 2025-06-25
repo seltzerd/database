@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"log"
+	"strings"
 
 	"fuk/fukkk"
+	"fuk/serv"
 
 	"github.com/spf13/cobra"
 )
@@ -21,15 +23,20 @@ func main() {
 		log.Fatal(err)
 	}
 
+	var argsStr string
+
 	var input = &cobra.Command{
 		Use:   "myapp",
 		Short: "examp",
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Println("Args:", args)
-			err := fukkk.Logs(db, fmt.Sprint(args), "good")
+			argsStr = strings.Join(args, " ")
+			fmt.Println(argsStr)
+
+			err := fukkk.Logs(db, argsStr, "good")
 			if err != nil {
 				log.Fatal(err)
 			}
+			serv.Server(&argsStr, db)
 		},
 	}
 
