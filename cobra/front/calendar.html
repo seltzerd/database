@@ -1,0 +1,25 @@
+<form id="taskForm">
+    <input type="date" name="date" required />
+    <input type="text" name="task" placeholder="Введите задачу" required />
+    <button type="submit">Сохранить</button>
+  </form>
+  <div id="result"></div>
+  
+  <script>
+    document.getElementById('taskForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const date = form.date.value;
+      const task = form.task.value;
+  
+      const res = await fetch('/log', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ task, date })
+      }); 
+  
+      const result = await res.json();
+      document.getElementById('result').innerText = result.message || 'correct';
+    });
+  </script>
+  

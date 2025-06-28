@@ -1,0 +1,42 @@
+<!-- <!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Календарь</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2em;
+    }
+    input, button {
+      font-size: 1em;
+      padding: 0.5em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Выбери дату</h1>
+  <form id="dateForm">
+    <input type="date" name="selectedDate" required />
+    <button type="submit">Отправить</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('dateForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const date = form.selectedDate.value;
+
+      const res = await fetch('/submit-date', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ date })
+      });
+
+      const result = await res.json();
+      document.getElementById('result').innerText = result.message;
+    });
+  </script>
+</body>
+</html> -->
